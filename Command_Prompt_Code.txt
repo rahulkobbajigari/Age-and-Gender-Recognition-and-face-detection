@@ -1,0 +1,10 @@
+# All codes are written in Command Prompt
+
+# Code to create positive samples
+opencv_createsamples -img img.jpg -bg bg.txt -info info/info.lst -pngoutput info -maxxangle 0.5 -maxyangle 0.5 -maxzangle 0.5 -num 1050
+
+#Code to Create Positive Vecotrs
+opencv_createsamples -info info/info.lst -num 1050 -w 20 -h 20 -vec positives.vec
+
+#Code to Create Cascade
+opencv_traincascade -data data -vec positives.vec -bg bg.txt -numPos 900 -numNeg 500 -numStages 10 -w 20 -h 20
